@@ -114,7 +114,7 @@ public class previous extends javax.swing.JFrame {
             Connection connection = DriverManager.getConnection(url, user, password);
             // build our sql statement to add a team from the team name box
             // String query = "INSERT INTO Teams (team_name) values('" + Teamname + "')";
-            String vQuerymatches = "select m.match_id,m.dateplayed as 'Match Date' ,t.team_name as 'Home Team',a.team_name as 'Away Team' ,w.team_name as 'Winner', " +
+            String vQuerymatches = "select m.match_id,m.dateplayed,t.team_name,a.team_name,m.home_score,m.away_score,w.team_name, " +
             "case when m.match_abandoned = 0 then 'No' else 'Yes' end as \"Match Abandoned\" " +
             "from Matches m, Teams t, Teams a, Teams w " +
             "where m.home_team = t.team_id and m.away_team = a.team_id and m.team_won = w.team_id;";
@@ -130,8 +130,10 @@ public class previous extends javax.swing.JFrame {
             scratchNames[1] = "Date Played";
             scratchNames[2] = "Home Team";
             scratchNames[3] = "Away Team";
-            scratchNames[4] = "Winner";
-            scratchNames[5] = "Match Abandoned";
+            scratchNames[4] = "Home Score";
+            scratchNames[5] = "Away Score";
+            scratchNames[6] = "Winner";
+            scratchNames[7] = "Match Abandoned";
             //scratchNames[7] = "plop";
             for (int i = 0; i < columnCount; i++) 
                 //columnNames.addElement( metaData.getColumnName(i) );

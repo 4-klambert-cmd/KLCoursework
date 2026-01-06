@@ -9,6 +9,11 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
+import java.util.Vector;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -123,10 +128,109 @@ public class teamstatistics extends javax.swing.JFrame {
     private void tssubmitbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tssubmitbuttonActionPerformed
         // TODO add your handling code here:
         String sTeam = String.valueOf(team.getSelectedItem());
+        java.sql.ResultSet vTeamstats = null;
+        Statement sta = null;
+        String url2 = "jdbc:mysql://185.156.138.148/4-klambert";
+        String user2 = "4-klambert";
+        String password2 = "Duty3-Palace-Area";
+        String vQueryteamstats = null;
+        DefaultTableModel model = new DefaultTableModel();
+        Vector columnNames = new Vector();
+        Vector data = new Vector();  
+        int x = 0;
         
-        String url = "jdbc:mysql://185.156.138.148/4-klambert";
-        String user = "4-klambert";
-        String password = "Duty3-Palace-Area";
+        try {
+            // create a connection to mysql db 
+            Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
+            Connection connection2 = DriverManager.getConnection(url2, user2, password2);
+            // build our sql statement to add a team from the team name box
+            // String query = "INSERT INTO Teams (team_name) values('" + Teamname + "')";
+            vQueryteamstats = "select m.match_id,m.dateplayed \"Match Date\",t.team_name \"Home Team\",a.team_name \"Away Team\",m.home_score,m.away_score,w.team_name \"Winner\", " +
+                "case " +
+                "when m.match_abandoned = 0 then 'No' " +
+                "else 'Yes' " +
+                "end as \"Match Abandoned\" " +
+                "from Matches m, Teams t, Teams a, Teams w " +
+                "where m.home_team = t.team_id " +
+                "and m.away_team = a.team_id " +
+                "and m.team_won = w.team_id " +
+                "and t.team_name = \""+ sTeam +"\" " +
+                "union " +
+                "select m.match_id,m.dateplayed \"Match Date\",t.team_name \"Home Team\",a.team_name \"Away Team\",m.home_score,m.away_score,w.team_name \"Winner\", " +
+                "case " +
+                "when m.match_abandoned = 0 then 'No' " +
+                "else 'Yes' " +
+                "end as \"Match Abandoned\" " +
+                "from Matches m, Teams t, Teams a, Teams w " +
+                "where m.home_team = t.team_id " +
+                "and m.away_team = a.team_id " +
+                "and m.team_won = w.team_id " +
+                "and a.team_name = \""+ sTeam +"\";";
+            sta = connection2.createStatement();
+            // execute the query
+            vTeamstats = sta.executeQuery(vQueryteamstats);
+            
+            java.sql.ResultSetMetaData metaData = vTeamstats.getMetaData();
+            int columnCount = metaData.getColumnCount();
+            String[] scratchNames = new String[columnCount];
+            scratchNames[0] = "Match ID";
+            scratchNames[1] = "Date Played";
+            scratchNames[2] = "Home Team";
+            scratchNames[3] = "Away Team";
+            scratchNames[4] = "Home Score";
+            scratchNames[5] = "Away Score";
+            scratchNames[6] = "Winner";
+            scratchNames[7] = "Match Abandoned";
+            for (int i = 0; i < columnCount; i++) 
+                columnNames.addElement( scratchNames[i] );
+            
+            
+            //model.setColumnIdentifiers(columnNames);
+            
+            //Object[] row = new Object[columnCount];
+            while (vTeamstats.next())
+            {
+                Vector row = new Vector(columnCount);
+                for (int i = 1; i <= columnCount; i++)
+                {
+                    row.addElement(vTeamstats.getObject(i));
+                }
+                data.addElement(row);
+            }
+                    
+            JTable table = new JTable(data, columnNames);
+            JScrollPane scrollPane = new JScrollPane( table );
+            
+            JFrame frame = new JFrame("Player Stats");
+            frame.add(scrollPane);
+
+            // Set the size and location of the frame
+            frame.setSize(800, 400);
+            frame.setLocationRelativeTo(null);
+
+            // Make the frame visible
+            frame.setVisible(true);
+            
+        
+            if (columnCount > 0) {
+                x = 0;
+            }
+            
+            if (x == 0) {
+                // if we get here it broke
+                // great JOptionPane.showMessageDialog(NTSubmitDB, "This team already exists");
+            } else {
+                // it was successfully added to the teams table in the mysql db
+                // let the user know
+                //JOptionPane.showMessageDialog(NTSubmitDB,
+                //            "Welcome, " + msg + "Team has been sucessfully created");
+                    }
+                    // close the connection to the db and commit
+                    connection2.close();
+                } catch (Exception exception) {
+                    exception.printStackTrace();
+                }
+        
     }//GEN-LAST:event_tssubmitbuttonActionPerformed
 
     /**

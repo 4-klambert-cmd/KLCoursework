@@ -9,6 +9,12 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
+import java.util.Vector;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author 4-klambert
@@ -142,10 +148,95 @@ public class Playerstatistics extends javax.swing.JFrame {
     private void StsubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StsubmitButtonActionPerformed
         // TODO add your handling code here:
         String sPlayer = String.valueOf(Player.getSelectedItem());
+        java.sql.ResultSet vStats = null;
+        Statement sta = null;
+        String url2 = "jdbc:mysql://185.156.138.148/4-klambert";
+        String user2 = "4-klambert";
+        String password2 = "Duty3-Palace-Area";
+        String vQuerystats = null;
+        DefaultTableModel model = new DefaultTableModel();
+        Vector columnNames = new Vector();
+        Vector data = new Vector();  
+        int x = 0;
         
-        String url = "jdbc:mysql://185.156.138.148/4-klambert";
-        String user = "4-klambert";
-        String password = "Duty3-Palace-Area";
+        try {
+            // create a connection to mysql db 
+            Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
+            Connection connection2 = DriverManager.getConnection(url2, user2, password2);
+            // build our sql statement to add a team from the team name box
+            // String query = "INSERT INTO Teams (team_name) values('" + Teamname + "')";
+            vQuerystats = "select s.match_id,m.dateplayed,p.players_name,s.runrate,s.catches,s.times_out,s.wickets_taken,t.team_name " +
+                "from Stats s, Teams t, Players p, Matches m " +
+                "where s.player_id = p.player_id " +
+                "and s.team_id = t.team_id " +
+                "and s.match_id = m.match_id " +
+                "and p.players_name = \""+ sPlayer +"\";";
+            sta = connection2.createStatement();
+            // execute the query
+            vStats = sta.executeQuery(vQuerystats);
+            
+            java.sql.ResultSetMetaData metaData = vStats.getMetaData();
+            int columnCount = metaData.getColumnCount();
+            String[] scratchNames = new String[columnCount];
+            scratchNames[0] = "Match ID";
+            scratchNames[1] = "Date Played";
+            scratchNames[2] = "Player Name";
+            scratchNames[3] = "Run Rate";
+            scratchNames[4] = "Catches";
+            scratchNames[5] = "Outs";
+            scratchNames[6] = "Wickets taken";
+            scratchNames[7] = "Team Name";
+            for (int i = 0; i < columnCount; i++) 
+                columnNames.addElement( scratchNames[i] );
+            
+            
+            //model.setColumnIdentifiers(columnNames);
+            
+            //Object[] row = new Object[columnCount];
+            while (vStats.next())
+            {
+                Vector row = new Vector(columnCount);
+                for (int i = 1; i <= columnCount; i++)
+                {
+                    row.addElement(vStats.getObject(i));
+                }
+                data.addElement(row);
+            }
+                    
+            JTable table = new JTable(data, columnNames);
+            JScrollPane scrollPane = new JScrollPane( table );
+            
+            JFrame frame = new JFrame("Player Stats");
+            frame.add(scrollPane);
+
+            // Set the size and location of the frame
+            frame.setSize(800, 400);
+            frame.setLocationRelativeTo(null);
+
+            // Make the frame visible
+            frame.setVisible(true);
+            
+        
+            if (columnCount > 0) {
+                x = 0;
+            }
+            
+            if (x == 0) {
+                // if we get here it broke
+                // great JOptionPane.showMessageDialog(NTSubmitDB, "This team already exists");
+            } else {
+                // it was successfully added to the teams table in the mysql db
+                // let the user know
+                //JOptionPane.showMessageDialog(NTSubmitDB,
+                //            "Welcome, " + msg + "Team has been sucessfully created");
+                    }
+                    // close the connection to the db and commit
+                    connection2.close();
+                } catch (Exception exception) {
+                    exception.printStackTrace();
+                }
+        
+        
     }//GEN-LAST:event_StsubmitButtonActionPerformed
 
     /**
