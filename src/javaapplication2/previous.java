@@ -134,14 +134,13 @@ public class previous extends javax.swing.JFrame {
             scratchNames[5] = "Away Score";
             scratchNames[6] = "Winner";
             scratchNames[7] = "Match Abandoned";
-            //scratchNames[7] = "plop";
             for (int i = 0; i < columnCount; i++) 
                 //columnNames.addElement( metaData.getColumnName(i) );
                 columnNames.addElement( scratchNames[i] );
             
             
             //model.setColumnIdentifiers(columnNames);
-            
+            //
             //Object[] row = new Object[columnCount];
             while (vMatches.next())
             {
