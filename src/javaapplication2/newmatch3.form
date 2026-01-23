@@ -516,6 +516,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Next over"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtnnextActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="B11">
       <Events>

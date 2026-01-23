@@ -16,14 +16,14 @@ import java.sql.PreparedStatement;
  * @author 4-klambert
  */
 public class newmatch3 extends javax.swing.JFrame {
-    
+    private int overcounter = 1;
+    private int paircounter = 1;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(newmatch3.class.getName());
 
     /**
      * Creates new form newmatch3
      */
     public newmatch3() {
-        
         initComponents();
         
         // not sure if this is the best place to initialise the variables
@@ -232,6 +232,11 @@ public class newmatch3 extends javax.swing.JFrame {
         jLabel2.setText("Notes");
 
         jbtnnext.setText("Next over");
+        jbtnnext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnnextActionPerformed(evt);
+            }
+        });
 
         B11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -711,6 +716,15 @@ public class newmatch3 extends javax.swing.JFrame {
     private void jbtndotballActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtndotballActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jbtndotballActionPerformed
+
+    private void jbtnnextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnnextActionPerformed
+        overnumber.setText(String.valueOf(overcounter));
+        overcounter++;
+        if (overcounter > 4){
+            overcounter = 1;
+        }
+            
+    }//GEN-LAST:event_jbtnnextActionPerformed
 
     /**
      * @param args the command line arguments
