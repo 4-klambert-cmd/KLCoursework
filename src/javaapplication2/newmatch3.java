@@ -719,11 +719,17 @@ public class newmatch3 extends javax.swing.JFrame {
 
     private void jbtnnextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnnextActionPerformed
         overnumber.setText(String.valueOf(overcounter));
-        overcounter++;
-        if (overcounter > 4){
-            overcounter = 1;
+        roundnumber.setText(String.valueOf(paircounter));  
+        overcounter++;//increases the over counter
+        if (overcounter > 4){//limits it at 4
+            overcounter = 1;//resets the over counter to one
+            paircounter++;//increases the pair counter when excuting the if
         }
-            
+        //stop count going further than 4:4
+        if (paircounter == 5){
+            //paircounter stop
+        }
+        
     }//GEN-LAST:event_jbtnnextActionPerformed
 
     /**
