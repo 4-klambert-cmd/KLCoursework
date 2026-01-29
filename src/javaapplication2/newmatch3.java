@@ -79,6 +79,7 @@ public class newmatch3 extends javax.swing.JFrame {
         }
         } catch (Exception e) {
         }
+       // B11 + B12 + B13 + B14 + B15 + B16 = batter1total;
     }
 
     /**
@@ -725,11 +726,12 @@ public class newmatch3 extends javax.swing.JFrame {
             overcounter = 1;//resets the over counter to one
             paircounter++;//increases the pair counter when excuting the if
         }
-        //stop count going further than 4:4
-        if (paircounter == 5){
-            //paircounter stop
+        //stop pair count going further than 4:4
+        if (paircounter > 4){
+            paircounter = 1;
+            overcounter = 1;
         }
-        
+        //reset boxes for new over keep players change bowler 
     }//GEN-LAST:event_jbtnnextActionPerformed
 
     /**
