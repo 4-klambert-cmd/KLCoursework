@@ -583,8 +583,16 @@ public class newmatch3 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void EnterNumbers (String q)
+    {
+        String Nums = B11.getText() +q;
+        String nums = B12.getText() + q;
+        B11.setText(Nums);
+        B12.setText(nums);
+    }
     private void jbtn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn6ActionPerformed
         // TODO add your handling code here:
+        EnterNumbers("6");
     }//GEN-LAST:event_jbtn6ActionPerformed
 
     private void jbtnnoballActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnnoballActionPerformed
