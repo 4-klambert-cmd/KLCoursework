@@ -161,8 +161,18 @@ public class newmatch3 extends javax.swing.JFrame {
         Batter2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Batter2" }));
 
         jbtn2.setText("2");
+        jbtn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn2ActionPerformed(evt);
+            }
+        });
 
         jbtn5.setText("5");
+        jbtn5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn5ActionPerformed(evt);
+            }
+        });
 
         jbtn6.setText("6");
         jbtn6.addActionListener(new java.awt.event.ActionListener() {
@@ -172,12 +182,32 @@ public class newmatch3 extends javax.swing.JFrame {
         });
 
         jbtn1.setText("1");
+        jbtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn1ActionPerformed(evt);
+            }
+        });
 
         jbtn4.setText("4");
+        jbtn4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn4ActionPerformed(evt);
+            }
+        });
 
         jbtn3.setText("3");
+        jbtn3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn3ActionPerformed(evt);
+            }
+        });
 
         jbtnbye.setText("^");
+        jbtnbye.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnbyeActionPerformed(evt);
+            }
+        });
 
         jbtnnoball.setText("O");
         jbtnnoball.addActionListener(new java.awt.event.ActionListener() {
@@ -187,6 +217,11 @@ public class newmatch3 extends javax.swing.JFrame {
         });
 
         jbtnwide.setText("+");
+        jbtnwide.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnwideActionPerformed(evt);
+            }
+        });
 
         jbtnlegbye.setText("v");
         jbtnlegbye.addActionListener(new java.awt.event.ActionListener() {
@@ -196,6 +231,11 @@ public class newmatch3 extends javax.swing.JFrame {
         });
 
         jbtncaught.setText("C");
+        jbtncaught.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtncaughtActionPerformed(evt);
+            }
+        });
 
         jbtnbowled.setText("B");
         jbtnbowled.addActionListener(new java.awt.event.ActionListener() {
@@ -583,36 +623,38 @@ public class newmatch3 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void EnterNumbers (String q)
+    private void EnterScore (String q)
     {
-        String Nums = B11.getText() +q;
-        String nums = B12.getText() + q;
-        B11.setText(Nums);
-        B12.setText(nums);
+        
     }
     private void jbtn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn6ActionPerformed
         // TODO add your handling code here:
-        EnterNumbers("6");
+        EnterScore("6");
     }//GEN-LAST:event_jbtn6ActionPerformed
 
     private void jbtnnoballActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnnoballActionPerformed
         // TODO add your handling code here:
+        EnterScore("O");
     }//GEN-LAST:event_jbtnnoballActionPerformed
 
     private void jbtnlegbyeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnlegbyeActionPerformed
         // TODO add your handling code here:
+        EnterScore("v");
     }//GEN-LAST:event_jbtnlegbyeActionPerformed
 
     private void jbtnbowledActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnbowledActionPerformed
         // TODO add your handling code here:
+        EnterScore("B");
     }//GEN-LAST:event_jbtnbowledActionPerformed
 
     private void jbtnrunoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnrunoutActionPerformed
         // TODO add your handling code here:
+        EnterScore("R");
     }//GEN-LAST:event_jbtnrunoutActionPerformed
 
     private void jbtnstumpedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnstumpedActionPerformed
         // TODO add your handling code here:
+        EnterScore("S");
     }//GEN-LAST:event_jbtnstumpedActionPerformed
 
     private void overnumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_overnumberActionPerformed
@@ -723,7 +765,7 @@ public class newmatch3 extends javax.swing.JFrame {
     }//GEN-LAST:event_Batter1ActionPerformed
 
     private void jbtndotballActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtndotballActionPerformed
-        // TODO add your handling code here:
+        EnterScore(".");
     }//GEN-LAST:event_jbtndotballActionPerformed
 
     private void jbtnnextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnnextActionPerformed
@@ -741,6 +783,46 @@ public class newmatch3 extends javax.swing.JFrame {
         }
         //reset boxes for new over keep players change bowler 
     }//GEN-LAST:event_jbtnnextActionPerformed
+
+    private void jbtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn1ActionPerformed
+        // TODO add your handling code here:
+        EnterScore("1");
+    }//GEN-LAST:event_jbtn1ActionPerformed
+
+    private void jbtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn4ActionPerformed
+        // TODO add your handling code here:
+        EnterScore("4");
+    }//GEN-LAST:event_jbtn4ActionPerformed
+
+    private void jbtnwideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnwideActionPerformed
+        // TODO add your handling code here:
+        EnterScore("+");
+    }//GEN-LAST:event_jbtnwideActionPerformed
+
+    private void jbtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn2ActionPerformed
+        // TODO add your handling code here:
+        EnterScore("2");
+    }//GEN-LAST:event_jbtn2ActionPerformed
+
+    private void jbtn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn5ActionPerformed
+        // TODO add your handling code here:
+        EnterScore("5");
+    }//GEN-LAST:event_jbtn5ActionPerformed
+
+    private void jbtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn3ActionPerformed
+        // TODO add your handling code here:
+        EnterScore("3");
+    }//GEN-LAST:event_jbtn3ActionPerformed
+
+    private void jbtnbyeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnbyeActionPerformed
+        // TODO add your handling code here:
+        EnterScore("^");
+    }//GEN-LAST:event_jbtnbyeActionPerformed
+
+    private void jbtncaughtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtncaughtActionPerformed
+        // TODO add your handling code here:
+        EnterScore("C");
+    }//GEN-LAST:event_jbtncaughtActionPerformed
 
     /**
      * @param args the command line arguments
