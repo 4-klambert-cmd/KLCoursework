@@ -79,7 +79,18 @@ public class newmatch3 extends javax.swing.JFrame {
         }
         } catch (Exception e) {
         }
-       // B11 + B12 + B13 + B14 + B15 + B16 = batter1total;
+       //B11 + B12 + B13 + B14 + B15 + B16 = batter1total;
+       //brrr
+       //private void Updatetotal(){
+           String total = 
+                   B11.getText()+
+                   B12.getText()+
+                   B13.getText()+
+                   B14.getText()+
+                   B15.getText()+
+                   B16.getText();
+           batter1total.setText(total);     
+       }
     }
 
     /**
@@ -622,14 +633,40 @@ public class newmatch3 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void EnterScore (String q)
     {
+        String Nums = B11.getText() + q;
+        B11.setText(Nums);
+        String Nums1 = B12.getText() + q;
+        B12.setText(Nums1);
+        String Nums2 = B13.getText() + q;
+        B13.setText(Nums2);
+        String Nums3 = B14.getText() + q;
+        B14.setText(Nums3);
+        String Nums4 = B15.getText() + q;
+        B15.setText(Nums4);
+        String Nums5 = B16.getText() + q;
+        B16.setText(Nums5);
+        String Nums6 = B21.getText() + q;
+        B21.setText(Nums6);
+        String Nums7 = B22.getText() + q;
+        B22.setText(Nums7);
+        String Nums8 = B23.getText() + q;
+        B23.setText(Nums8);
+        String Nums9 = B24.getText() + q;
+        B24.setText(Nums9);
+        String Nums10 = B25.getText() + q;
+        B25.setText(Nums10);
+        String Nums11 = B26.getText() + q;
+        B26.setText(Nums11);
         
+
     }
     private void jbtn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn6ActionPerformed
         // TODO add your handling code here:
         EnterScore("6");
+        
     }//GEN-LAST:event_jbtn6ActionPerformed
 
     private void jbtnnoballActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnnoballActionPerformed
@@ -909,4 +946,4 @@ public class newmatch3 extends javax.swing.JFrame {
     private javax.swing.JTextField overnumber;
     private javax.swing.JTextField roundnumber;
     // End of variables declaration//GEN-END:variables
-}
+
