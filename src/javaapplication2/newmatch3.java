@@ -15,9 +15,9 @@ import java.sql.PreparedStatement;
  *
  * @author 4-klambert
  */
-public class newmatch3 extends javax.swing.JFrame {
-    private int overcounter = 1;
-    private int paircounter = 1;
+public class newmatch3 extends javax.swing.JFrame {  
+    
+    //private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Playerstatistics.class.getName());
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(newmatch3.class.getName());
 
     /**
@@ -91,7 +91,9 @@ public class newmatch3 extends javax.swing.JFrame {
                    B16.getText();
            batter1total.setText(total);     
        }
-    }
+
+    private int overcounter = 1;
+    private int paircounter = 1;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -864,7 +866,7 @@ public class newmatch3 extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -882,13 +884,8 @@ public class newmatch3 extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new newmatch3().setVisible(true);
-            }
-        });
     }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> AwayTeamComboBox2;
     private javax.swing.JTextField B11;
@@ -946,4 +943,4 @@ public class newmatch3 extends javax.swing.JFrame {
     private javax.swing.JTextField overnumber;
     private javax.swing.JTextField roundnumber;
     // End of variables declaration//GEN-END:variables
-
+}

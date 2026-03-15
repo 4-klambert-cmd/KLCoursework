@@ -189,7 +189,7 @@ public class previous extends javax.swing.JFrame {
     }//GEN-LAST:event_submitbtnActionPerformed
 
     private void backbtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtn4ActionPerformed
-                // the back button will take us to a new homescreen object
+                // the back button will take us to a new homescreen 
         homescreen hs = new homescreen();
         hs.setVisible(true);
         // close/dispose of the current class

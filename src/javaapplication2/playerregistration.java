@@ -6,6 +6,8 @@ package javaapplication2;
 // import sql classes needed
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 
@@ -20,6 +22,22 @@ public class playerregistration extends javax.swing.JFrame {
      */
     public playerregistration() {
         initComponents();
+        ResultSet vTeam;
+        String url = "jdbc:mysql://185.156.138.148/4-klambert";
+        String user = "4-klambert";
+        String password = "Duty3-Palace-Area";
+        String vQueryTeam = "SELECT team_name FROM Teams";
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
+            Connection connect = DriverManager.getConnection(url, user, password);
+            PreparedStatement ps2 = connect.prepareStatement(vQueryTeam);
+            vTeam = ps2.executeQuery();
+            while(vTeam.next()) {
+                teamselect.addItem(vTeam.getString("team_name"));
+            }
+            } catch (Exception e) {
+        }
     }
 
     /**
@@ -34,10 +52,10 @@ public class playerregistration extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         FullNameBox = new javax.swing.JTextField();
-        TeamNameBox = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         BackButton1 = new javax.swing.JButton();
         NPSubmitDB = new javax.swing.JButton();
+        teamselect = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,34 +86,37 @@ public class playerregistration extends javax.swing.JFrame {
             }
         });
 
+        teamselect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Team name" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(91, 91, 91)
+                        .addContainerGap(91, Short.MAX_VALUE)
                         .addComponent(jLabel2))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel3))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(BackButton1)))
+                        .addContainerGap(70, Short.MAX_VALUE)
+                        .addComponent(BackButton1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(98, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
+                        .addGap(17, 17, 17)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(45, 45, 45)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(TeamNameBox, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(FullNameBox, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(134, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(NPSubmitDB)
+                        .addComponent(FullNameBox, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addComponent(NPSubmitDB))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(teamselect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(185, 185, 185))
         );
         layout.setVerticalGroup(
@@ -112,13 +133,13 @@ public class playerregistration extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(FullNameBox, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TeamNameBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(36, 36, 36)
+                    .addComponent(jLabel3)
+                    .addComponent(teamselect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
                 .addComponent(NPSubmitDB)
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
 
         pack();
@@ -140,7 +161,8 @@ public class playerregistration extends javax.swing.JFrame {
         // TODO add your handling code here:
         // get the values from the name and team boxes
         String Fullname = FullNameBox.getText();
-        String Teamname = TeamNameBox.getText();
+        //String Teamname = teamselect.getText();
+        String Teamname = String.valueOf(teamselect.getSelectedItem());
         // add a \n to the end of the string for the joption window
         String msg = "" + Fullname;
         msg += " \n";
@@ -154,7 +176,8 @@ public class playerregistration extends javax.swing.JFrame {
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
             Connection connection = DriverManager.getConnection(url, user, password);
             // build our sql statement to add a player from the player name box
-            String query = "INSERT INTO Players (players_name, Team_id) values('" + Fullname + "','" + Teamname + "')";
+            //String query = "INSERT INTO Players (players_name, Team_name) values('" + Fullname + "', select team_id from Teams where team_name ='" + Teamname + "')";
+            String query = "INSERT INTO Players (players_name, team_id) values ('" + Fullname + "',(select team_id from Teams where team_name =\"" + Teamname + "\"))";
             Statement sta = connection.createStatement();
             // execute the query
             int x = sta.executeUpdate(query);
@@ -214,9 +237,9 @@ public class playerregistration extends javax.swing.JFrame {
     private javax.swing.JButton BackButton1;
     private javax.swing.JTextField FullNameBox;
     private javax.swing.JButton NPSubmitDB;
-    private javax.swing.JTextField TeamNameBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JComboBox<String> teamselect;
     // End of variables declaration//GEN-END:variables
 }

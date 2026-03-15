@@ -73,10 +73,12 @@
                   <Component id="statistics" alignment="3" min="-2" pref="70" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="previousmatch" alignment="3" min="-2" pref="70" max="-2" attributes="0"/>
-                  <Component id="registerteam1" alignment="3" min="-2" pref="70" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="teamstatistics" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="previousmatch" alignment="3" min="-2" pref="70" max="-2" attributes="0"/>
+                      <Component id="registerteam1" alignment="3" min="-2" pref="70" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
           </Group>
