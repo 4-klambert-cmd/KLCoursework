@@ -4,12 +4,16 @@
  */
 package javaapplication2;
 // import the sql classes here that we use
+import java.awt.event.ActionEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
+import javax.swing.Action;
+import javax.swing.text.JTextComponent;
+import javax.swing.text.TextAction;
 
 /**
  *
@@ -90,7 +94,17 @@ public class newmatch3 extends javax.swing.JFrame {
                    B15.getText()+
                    B16.getText();
            batter1total.setText(total);     
-       }
+           
+       /* Action numberAction1 = new TextAction("1")
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                JTextComponent input = getFocusedComponent();
+                input.replaceSelection(e.getActionCommand());
+            }
+        };*/
+    }
 
     private int overcounter = 1;
     private int paircounter = 1;
@@ -195,6 +209,16 @@ public class newmatch3 extends javax.swing.JFrame {
         });
 
         jbtn1.setText("1");
+        Action numberAction1 = new TextAction("1")
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                JTextComponent input = getFocusedComponent();
+                input.replaceSelection(e.getActionCommand());
+            }
+        };
+        jbtn1.addActionListener( numberAction1 );
         jbtn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtn1ActionPerformed(evt);
@@ -340,9 +364,9 @@ public class newmatch3 extends javax.swing.JFrame {
 
         jLabel11.setText("Total");
 
-        jLabel12.setText("Key: + - wide, ^ - bye, V - leg bye, O - no ball");
+        jLabel12.setText("Key: + wide ^ bye V leg bye O no ball");
 
-        jLabel13.setText("C - Caught, B - Bowled, S - Stumped, R - run out");
+        jLabel13.setText("C - Caught B - Bowled S - Stumped R - run out");
 
         HomeTeamComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "HomeTeam" }));
         HomeTeamComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -636,6 +660,7 @@ public class newmatch3 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
+    
     private void EnterScore (String q)
     {
         String Nums = B11.getText() + q;
@@ -665,35 +690,41 @@ public class newmatch3 extends javax.swing.JFrame {
         
 
     }
+    
+    private void EnterScore1 (String q)
+    {
+        B11.setText(q);
+    }
+    
     private void jbtn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn6ActionPerformed
         // TODO add your handling code here:
-        EnterScore("6");
+        EnterScore1("6");
         
     }//GEN-LAST:event_jbtn6ActionPerformed
 
     private void jbtnnoballActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnnoballActionPerformed
         // TODO add your handling code here:
-        EnterScore("O");
+        EnterScore1("O");
     }//GEN-LAST:event_jbtnnoballActionPerformed
 
     private void jbtnlegbyeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnlegbyeActionPerformed
         // TODO add your handling code here:
-        EnterScore("v");
+        EnterScore1("v");
     }//GEN-LAST:event_jbtnlegbyeActionPerformed
 
     private void jbtnbowledActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnbowledActionPerformed
         // TODO add your handling code here:
-        EnterScore("B");
+        EnterScore1("B");
     }//GEN-LAST:event_jbtnbowledActionPerformed
 
     private void jbtnrunoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnrunoutActionPerformed
         // TODO add your handling code here:
-        EnterScore("R");
+        EnterScore1("R");
     }//GEN-LAST:event_jbtnrunoutActionPerformed
 
     private void jbtnstumpedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnstumpedActionPerformed
         // TODO add your handling code here:
-        EnterScore("S");
+        EnterScore1("S");
     }//GEN-LAST:event_jbtnstumpedActionPerformed
 
     private void overnumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_overnumberActionPerformed
@@ -825,42 +856,42 @@ public class newmatch3 extends javax.swing.JFrame {
 
     private void jbtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn1ActionPerformed
         // TODO add your handling code here:
-        EnterScore("1");
+        EnterScore1("1");
     }//GEN-LAST:event_jbtn1ActionPerformed
 
     private void jbtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn4ActionPerformed
         // TODO add your handling code here:
-        EnterScore("4");
+        EnterScore1("4");
     }//GEN-LAST:event_jbtn4ActionPerformed
 
     private void jbtnwideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnwideActionPerformed
         // TODO add your handling code here:
-        EnterScore("+");
+        EnterScore1("+");
     }//GEN-LAST:event_jbtnwideActionPerformed
 
     private void jbtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn2ActionPerformed
         // TODO add your handling code here:
-        EnterScore("2");
+        EnterScore1("2");
     }//GEN-LAST:event_jbtn2ActionPerformed
 
     private void jbtn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn5ActionPerformed
         // TODO add your handling code here:
-        EnterScore("5");
+        EnterScore1("5");
     }//GEN-LAST:event_jbtn5ActionPerformed
 
     private void jbtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn3ActionPerformed
         // TODO add your handling code here:
-        EnterScore("3");
+        EnterScore1("3");
     }//GEN-LAST:event_jbtn3ActionPerformed
 
     private void jbtnbyeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnbyeActionPerformed
         // TODO add your handling code here:
-        EnterScore("^");
+        EnterScore1("^");
     }//GEN-LAST:event_jbtnbyeActionPerformed
 
     private void jbtncaughtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtncaughtActionPerformed
         // TODO add your handling code here:
-        EnterScore("C");
+        EnterScore1("C");
     }//GEN-LAST:event_jbtncaughtActionPerformed
 
     /**

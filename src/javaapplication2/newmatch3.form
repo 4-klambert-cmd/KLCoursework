@@ -425,6 +425,9 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtn1ActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="Action numberAction1 = new TextAction(&quot;1&quot;)&#xd;&#xa;        {&#xd;&#xa;            @Override&#xd;&#xa;            public void actionPerformed(ActionEvent e)&#xd;&#xa;            {&#xd;&#xa;                JTextComponent input = getFocusedComponent();&#xd;&#xa;                input.replaceSelection(e.getActionCommand());&#xd;&#xa;            }&#xd;&#xa;        };&#xd;&#xa;jbtn1.addActionListener( numberAction1 );"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="jbtn4">
       <Properties>
@@ -634,12 +637,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel12">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Key: + - wide, ^ - bye, V - leg bye, O - no ball"/>
+        <Property name="text" type="java.lang.String" value="Key: + wide ^ bye V leg bye O no ball"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel13">
       <Properties>
-        <Property name="text" type="java.lang.String" value="C - Caught, B - Bowled, S - Stumped, R - run out"/>
+        <Property name="text" type="java.lang.String" value="C - Caught B - Bowled S - Stumped R - run out"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="HomeTeamComboBox1">
