@@ -423,6 +423,9 @@ public class newmatch3 extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 batter2totalFocusGained(evt);
             }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                batter2totalFocusLost(evt);
+            }
         });
 
         jLabel12.setText("Key: + wide ^ bye V leg bye O no ball");
@@ -1158,6 +1161,12 @@ public class newmatch3 extends javax.swing.JFrame {
         String sscore1 = batter1total.getText();
         batter1total.setText(sscore1);
     }//GEN-LAST:event_batter1totalFocusLost
+
+    private void batter2totalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_batter2totalFocusLost
+        // TODO add your handling code here:
+        String sscore2 = batter2total.getText();
+        batter2total.setText(sscore2);
+    }//GEN-LAST:event_batter2totalFocusLost
 
     /**
      * @param args the command line arguments
