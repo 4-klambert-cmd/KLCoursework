@@ -997,12 +997,11 @@ public class newmatch3 extends javax.swing.JFrame {
         int wicket = -5;
             
         int[] arrayOfibo1 = new int[6];
-        arrayOfibo1[0] = 0;
-        arrayOfibo1[1] = 0;
-        arrayOfibo1[2] = 0;
-        arrayOfibo1[3] = 0;
-        arrayOfibo1[4] = 0;
-        arrayOfibo1[5] = 0;
+        int b = 0;
+        while (b<=5) {
+            arrayOfibo1[b] = 0;
+            b++;
+        }
         
         String[] arrayOfsbo1 = new String[6];
         arrayOfsbo1[0] = B11.getText();
@@ -1061,7 +1060,7 @@ public class newmatch3 extends javax.swing.JFrame {
                     arrayOfibo1[i] = 6;
                     break;
                 default:
-                    System.out.println("Oh dear");
+                    arrayOfibo1[i] = 0;
             }
             i++;       
         }
@@ -1082,12 +1081,11 @@ public class newmatch3 extends javax.swing.JFrame {
         int wicket = -5;
             
         int[] arrayOfibo2 = new int[6];
-        arrayOfibo2[0] = 0;
-        arrayOfibo2[1] = 0;
-        arrayOfibo2[2] = 0;
-        arrayOfibo2[3] = 0;
-        arrayOfibo2[4] = 0;
-        arrayOfibo2[5] = 0;
+        int b = 0;
+        while (b<=5) {
+            arrayOfibo2[b] = 0;
+            b++;
+        }
         
         String[] arrayOfsbo2 = new String[6];
         arrayOfsbo2[0] = B21.getText();
@@ -1146,7 +1144,7 @@ public class newmatch3 extends javax.swing.JFrame {
                     arrayOfibo2[i] = 6;
                     break;
                 default:
-                    System.out.println("Oh dear");
+                    arrayOfibo2[i] = 0;
             }
             i++;       
         }
