@@ -391,8 +391,14 @@
       </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="B12">
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="B12FocusGained"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="B13">
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="B13FocusGained"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jbtn2">
       <Properties>
@@ -425,9 +431,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtn1ActionPerformed"/>
       </Events>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="Action numberAction1 = new TextAction(&quot;1&quot;)&#xd;&#xa;        {&#xd;&#xa;            @Override&#xd;&#xa;            public void actionPerformed(ActionEvent e)&#xd;&#xa;            {&#xd;&#xa;                JTextComponent input = getFocusedComponent();&#xd;&#xa;                input.replaceSelection(e.getActionCommand());&#xd;&#xa;            }&#xd;&#xa;        };&#xd;&#xa;jbtn1.addActionListener( numberAction1 );"/>
-      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="jbtn4">
       <Properties>
@@ -549,32 +552,53 @@
     </Component>
     <Component class="javax.swing.JTextField" name="B11">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B11ActionPerformed"/>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="B11FocusGained"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="B14">
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="B14FocusGained"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="B15">
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="B15FocusGained"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="B16">
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="B16FocusGained"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="B21">
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="B21FocusGained"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="B24">
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="B24FocusGained"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="B25">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B25ActionPerformed"/>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="B25FocusGained"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="B26">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B26ActionPerformed"/>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="B26FocusGained"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="B22">
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="B22FocusGained"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="B23">
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="B23FocusGained"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
@@ -632,6 +656,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="batter1total">
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="batter1totalFocusGained"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="batter2total">
     </Component>

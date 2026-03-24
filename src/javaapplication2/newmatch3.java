@@ -23,6 +23,7 @@ public class newmatch3 extends javax.swing.JFrame {
     
     //private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Playerstatistics.class.getName());
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(newmatch3.class.getName());
+    private String CurrentFocus;
 
     /**
      * Creates new form newmatch3
@@ -187,6 +188,18 @@ public class newmatch3 extends javax.swing.JFrame {
 
         Batter2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Batter2" }));
 
+        B12.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                B12FocusGained(evt);
+            }
+        });
+
+        B13.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                B13FocusGained(evt);
+            }
+        });
+
         jbtn2.setText("2");
         jbtn2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -209,16 +222,6 @@ public class newmatch3 extends javax.swing.JFrame {
         });
 
         jbtn1.setText("1");
-        Action numberAction1 = new TextAction("1")
-        {
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-                JTextComponent input = getFocusedComponent();
-                input.replaceSelection(e.getActionCommand());
-            }
-        };
-        jbtn1.addActionListener( numberAction1 );
         jbtn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtn1ActionPerformed(evt);
@@ -316,21 +319,63 @@ public class newmatch3 extends javax.swing.JFrame {
             }
         });
 
-        B11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B11ActionPerformed(evt);
+        B11.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                B11FocusGained(evt);
             }
         });
 
-        B25.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B25ActionPerformed(evt);
+        B14.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                B14FocusGained(evt);
             }
         });
 
-        B26.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B26ActionPerformed(evt);
+        B15.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                B15FocusGained(evt);
+            }
+        });
+
+        B16.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                B16FocusGained(evt);
+            }
+        });
+
+        B21.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                B21FocusGained(evt);
+            }
+        });
+
+        B24.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                B24FocusGained(evt);
+            }
+        });
+
+        B25.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                B25FocusGained(evt);
+            }
+        });
+
+        B26.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                B26FocusGained(evt);
+            }
+        });
+
+        B22.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                B22FocusGained(evt);
+            }
+        });
+
+        B23.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                B23FocusGained(evt);
             }
         });
 
@@ -363,6 +408,12 @@ public class newmatch3 extends javax.swing.JFrame {
         jLabel10.setText("Total");
 
         jLabel11.setText("Total");
+
+        batter1total.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                batter1totalFocusGained(evt);
+            }
+        });
 
         jLabel12.setText("Key: + wide ^ bye V leg bye O no ball");
 
@@ -660,40 +711,23 @@ public class newmatch3 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    
-    private void EnterScore (String q)
-    {
-        String Nums = B11.getText() + q;
-        B11.setText(Nums);
-        String Nums1 = B12.getText() + q;
-        B12.setText(Nums1);
-        String Nums2 = B13.getText() + q;
-        B13.setText(Nums2);
-        String Nums3 = B14.getText() + q;
-        B14.setText(Nums3);
-        String Nums4 = B15.getText() + q;
-        B15.setText(Nums4);
-        String Nums5 = B16.getText() + q;
-        B16.setText(Nums5);
-        String Nums6 = B21.getText() + q;
-        B21.setText(Nums6);
-        String Nums7 = B22.getText() + q;
-        B22.setText(Nums7);
-        String Nums8 = B23.getText() + q;
-        B23.setText(Nums8);
-        String Nums9 = B24.getText() + q;
-        B24.setText(Nums9);
-        String Nums10 = B25.getText() + q;
-        B25.setText(Nums10);
-        String Nums11 = B26.getText() + q;
-        B26.setText(Nums11);
-        
-
-    }
-    
     private void EnterScore1 (String q)
     {
-        B11.setText(q);
+        switch(CurrentFocus)
+        {
+            case "B11" -> B11.setText(q);
+            case "B12" -> B12.setText(q);
+            case "B13" -> B13.setText(q);
+            case "B14" -> B14.setText(q);
+            case "B15" -> B15.setText(q);
+            case "B16" -> B16.setText(q);
+            case "B21" -> B21.setText(q);
+            case "B22" -> B22.setText(q);
+            case "B23" -> B23.setText(q);
+            case "B24" -> B24.setText(q);
+            case "B25" -> B25.setText(q);
+            case "B26" -> B26.setText(q);
+        }
     }
     
     private void jbtn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn6ActionPerformed
@@ -738,18 +772,6 @@ public class newmatch3 extends javax.swing.JFrame {
     private void ctotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ctotalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ctotalActionPerformed
-
-    private void B25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B25ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_B25ActionPerformed
-
-    private void B26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B26ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_B26ActionPerformed
-
-    private void B11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_B11ActionPerformed
 
     private void HomeTeamComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeTeamComboBox1ActionPerformed
         // TODO add your handling code here:
@@ -835,7 +857,7 @@ public class newmatch3 extends javax.swing.JFrame {
     }//GEN-LAST:event_Batter1ActionPerformed
 
     private void jbtndotballActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtndotballActionPerformed
-        EnterScore(".");
+        EnterScore1(".");
     }//GEN-LAST:event_jbtndotballActionPerformed
 
     private void jbtnnextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnnextActionPerformed
@@ -893,6 +915,85 @@ public class newmatch3 extends javax.swing.JFrame {
         // TODO add your handling code here:
         EnterScore1("C");
     }//GEN-LAST:event_jbtncaughtActionPerformed
+
+    private void B11FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_B11FocusGained
+        // TODO add your handling code here:
+        CurrentFocus = "B11";
+    }//GEN-LAST:event_B11FocusGained
+
+    private void B12FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_B12FocusGained
+        // TODO add your handling code here:
+        CurrentFocus = "B12";
+    }//GEN-LAST:event_B12FocusGained
+
+    private void B13FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_B13FocusGained
+        // TODO add your handling code here:
+        CurrentFocus = "B13";
+    }//GEN-LAST:event_B13FocusGained
+
+    private void B14FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_B14FocusGained
+        // TODO add your handling code here:
+        CurrentFocus = "B14";
+    }//GEN-LAST:event_B14FocusGained
+
+    private void B15FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_B15FocusGained
+        // TODO add your handling code here:
+        CurrentFocus = "B15";
+    }//GEN-LAST:event_B15FocusGained
+
+    private void B16FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_B16FocusGained
+        // TODO add your handling code here:
+        CurrentFocus = "B16";
+    }//GEN-LAST:event_B16FocusGained
+
+    private void B21FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_B21FocusGained
+        // TODO add your handling code here:
+        CurrentFocus = "B21";
+    }//GEN-LAST:event_B21FocusGained
+
+    private void B22FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_B22FocusGained
+        // TODO add your handling code here:
+        CurrentFocus = "B22";
+    }//GEN-LAST:event_B22FocusGained
+
+    private void B23FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_B23FocusGained
+        // TODO add your handling code here:
+        CurrentFocus = "B23";
+    }//GEN-LAST:event_B23FocusGained
+
+    private void B24FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_B24FocusGained
+        // TODO add your handling code here:
+        CurrentFocus = "B24";
+    }//GEN-LAST:event_B24FocusGained
+
+    private void B25FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_B25FocusGained
+        // TODO add your handling code here:
+        CurrentFocus = "B25";
+    }//GEN-LAST:event_B25FocusGained
+
+    private void B26FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_B26FocusGained
+        // TODO add your handling code here:
+        CurrentFocus = "B26";
+    }//GEN-LAST:event_B26FocusGained
+
+    private void batter1totalFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_batter1totalFocusGained
+        // TODO add your handling code here:
+        int ib011 = 0;
+        int ib012 = 0;
+        int ib013 = 0;
+        int ib014 = 0;
+        int ib015 = 0;
+        int ib016 = 0;
+        String sbo11 = B11.getText();
+        String sbo12 = B12.getText();
+        String sbo13 = B13.getText();
+        String sbo14 = B14.getText();
+        String sbo15 = B15.getText();
+        String sbo16 = B16.getText();
+        int score1 = ib011 + ib012 + ib013 + ib014 + ib015 + ib016;
+        String sscore = Integer.toString(score1);
+        batter1total.setText(sscore);
+    }//GEN-LAST:event_batter1totalFocusGained
 
     /**
      * @param args the command line arguments
