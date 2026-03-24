@@ -11,6 +11,7 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
+import java.util.stream.IntStream;
 import javax.swing.Action;
 import javax.swing.text.JTextComponent;
 import javax.swing.text.TextAction;
@@ -412,6 +413,15 @@ public class newmatch3 extends javax.swing.JFrame {
         batter1total.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 batter1totalFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                batter1totalFocusLost(evt);
+            }
+        });
+
+        batter2total.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                batter2totalFocusGained(evt);
             }
         });
 
@@ -978,22 +988,178 @@ public class newmatch3 extends javax.swing.JFrame {
 
     private void batter1totalFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_batter1totalFocusGained
         // TODO add your handling code here:
-        int ib011 = 0;
-        int ib012 = 0;
-        int ib013 = 0;
-        int ib014 = 0;
-        int ib015 = 0;
-        int ib016 = 0;
-        String sbo11 = B11.getText();
-        String sbo12 = B12.getText();
-        String sbo13 = B13.getText();
-        String sbo14 = B14.getText();
-        String sbo15 = B15.getText();
-        String sbo16 = B16.getText();
-        int score1 = ib011 + ib012 + ib013 + ib014 + ib015 + ib016;
-        String sscore = Integer.toString(score1);
-        batter1total.setText(sscore);
+        // constants
+        int noball = 2;
+        int wide = 2;
+        int bye = 0;
+        int legbye = 0;
+        int dotball = 0;
+        int wicket = -5;
+            
+        int[] arrayOfibo1 = new int[6];
+        arrayOfibo1[0] = 0;
+        arrayOfibo1[1] = 0;
+        arrayOfibo1[2] = 0;
+        arrayOfibo1[3] = 0;
+        arrayOfibo1[4] = 0;
+        arrayOfibo1[5] = 0;
+        
+        String[] arrayOfsbo1 = new String[6];
+        arrayOfsbo1[0] = B11.getText();
+        arrayOfsbo1[1] = B12.getText();
+        arrayOfsbo1[2] = B13.getText();
+        arrayOfsbo1[3] = B14.getText();
+        arrayOfsbo1[4] = B15.getText();
+        arrayOfsbo1[5] = B16.getText();
+        
+        int i = 0;
+        while (i<=5) {
+            switch (arrayOfsbo1[i]) {
+                case "O":
+                    arrayOfibo1[i] = noball;
+                    break;
+                case "+":
+                    arrayOfibo1[i] = wide;
+                    break;
+                case "^":
+                    arrayOfibo1[i] = bye;
+                    break;
+                case "V":
+                    arrayOfibo1[i] = legbye;
+                    break;
+                case ".":
+                    arrayOfibo1[i] = dotball;
+                    break;
+                case "C":
+                    arrayOfibo1[i] = wicket;
+                    break;
+                case "B":
+                    arrayOfibo1[i] = wicket;
+                    break;
+                case "R":
+                    arrayOfibo1[i] = wicket;
+                    break;
+                case "S":
+                    arrayOfibo1[i] = wicket;
+                    break;
+                case "1":
+                    arrayOfibo1[i] = 1;
+                    break;
+                case "2":
+                    arrayOfibo1[i] = 2;
+                    break;
+                case "3":
+                    arrayOfibo1[i] = 3;
+                    break;
+                case "4":
+                    arrayOfibo1[i] = 4;
+                    break;
+                case "5":
+                    arrayOfibo1[i] = 5;
+                    break;
+                case "6":
+                    arrayOfibo1[i] = 6;
+                    break;
+                default:
+                    System.out.println("Oh dear");
+            }
+            i++;       
+        }
+        int score1 = IntStream.of(arrayOfibo1).sum();
+        String sscore1 = Integer.toString(score1);
+        batter1total.setText(sscore1);
     }//GEN-LAST:event_batter1totalFocusGained
+
+    private void batter2totalFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_batter2totalFocusGained
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+        // constants
+        int noball = 2;
+        int wide = 2;
+        int bye = 0;
+        int legbye = 0;
+        int dotball = 0;
+        int wicket = -5;
+            
+        int[] arrayOfibo2 = new int[6];
+        arrayOfibo2[0] = 0;
+        arrayOfibo2[1] = 0;
+        arrayOfibo2[2] = 0;
+        arrayOfibo2[3] = 0;
+        arrayOfibo2[4] = 0;
+        arrayOfibo2[5] = 0;
+        
+        String[] arrayOfsbo2 = new String[6];
+        arrayOfsbo2[0] = B21.getText();
+        arrayOfsbo2[1] = B22.getText();
+        arrayOfsbo2[2] = B23.getText();
+        arrayOfsbo2[3] = B24.getText();
+        arrayOfsbo2[4] = B25.getText();
+        arrayOfsbo2[5] = B26.getText();
+        
+        int i = 0;
+        while (i<=5) {
+            switch (arrayOfsbo2[i]) {
+                case "O":
+                    arrayOfibo2[i] = noball;
+                    break;
+                case "+":
+                    arrayOfibo2[i] = wide;
+                    break;
+                case "^":
+                    arrayOfibo2[i] = bye;
+                    break;
+                case "V":
+                    arrayOfibo2[i] = legbye;
+                    break;
+                case ".":
+                    arrayOfibo2[i] = dotball;
+                    break;
+                case "C":
+                    arrayOfibo2[i] = wicket;
+                    break;
+                case "B":
+                    arrayOfibo2[i] = wicket;
+                    break;
+                case "R":
+                    arrayOfibo2[i] = wicket;
+                    break;
+                case "S":
+                    arrayOfibo2[i] = wicket;
+                    break;
+                case "1":
+                    arrayOfibo2[i] = 1;
+                    break;
+                case "2":
+                    arrayOfibo2[i] = 2;
+                    break;
+                case "3":
+                    arrayOfibo2[i] = 3;
+                    break;
+                case "4":
+                    arrayOfibo2[i] = 4;
+                    break;
+                case "5":
+                    arrayOfibo2[i] = 5;
+                    break;
+                case "6":
+                    arrayOfibo2[i] = 6;
+                    break;
+                default:
+                    System.out.println("Oh dear");
+            }
+            i++;       
+        }
+        int score2 = IntStream.of(arrayOfibo2).sum();
+        String sscore2 = Integer.toString(score2);
+        batter2total.setText(sscore2);
+    }//GEN-LAST:event_batter2totalFocusGained
+
+    private void batter1totalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_batter1totalFocusLost
+        // TODO add your handling code here:
+        String sscore1 = batter1total.getText();
+        batter1total.setText(sscore1);
+    }//GEN-LAST:event_batter1totalFocusLost
 
     /**
      * @param args the command line arguments
