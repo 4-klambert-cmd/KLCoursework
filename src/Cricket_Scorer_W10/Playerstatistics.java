@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package javaapplication2;
+package Cricket_Scorer_W10;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
@@ -17,30 +17,29 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author katy
+ * @author 4-klambert
  */
-public class teamstatistics extends javax.swing.JFrame {
+public class Playerstatistics extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(teamstatistics.class.getName());
-
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Playerstatistics.class.getName());
     /**
-     * Creates new form teamstatistics
+     * Creates new form Statistics
      */
-    public teamstatistics() {
+    public Playerstatistics() {
         initComponents();
-        ResultSet vTeam;
+        ResultSet vPlayer;
         String url = "jdbc:mysql://185.156.138.148/4-klambert";
         String user = "4-klambert";
         String password = "Duty3-Palace-Area";
-        String vQueryTeam = "SELECT team_name FROM Teams";
+        String vQueryplayer = "SELECT players_name FROM Players";
         
         try {
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
             Connection connect = DriverManager.getConnection(url, user, password);
-            PreparedStatement ps2 = connect.prepareStatement(vQueryTeam);
-            vTeam = ps2.executeQuery();
-            while(vTeam.next()) {
-                team.addItem(vTeam.getString("team_name"));
+            PreparedStatement ps1 = connect.prepareStatement(vQueryplayer);
+            vPlayer = ps1.executeQuery();
+            while(vPlayer.next()) {
+                Player.addItem(vPlayer.getString("players_name"));
             }
             } catch (Exception e) {
     }
@@ -55,85 +54,106 @@ public class teamstatistics extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        Player = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        team = new javax.swing.JComboBox<>();
-        Backbtn3 = new javax.swing.JButton();
-        tssubmitbutton = new javax.swing.JButton();
+        BackButton2 = new javax.swing.JButton();
+        StsubmitButton = new javax.swing.JButton();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        Player.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Player" }));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setText("Statistics");
 
-        jLabel2.setText("Choose your team");
+        jLabel2.setText("Choose your player");
 
-        team.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Team" }));
+        BackButton2.setText("Back");
+        BackButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackButton2ActionPerformed(evt);
+            }
+        });
 
-        Backbtn3.setText("Back");
-        Backbtn3.addActionListener(this::Backbtn3ActionPerformed);
-
-        tssubmitbutton.setText("Submit");
-        tssubmitbutton.addActionListener(this::tssubmitbuttonActionPerformed);
+        StsubmitButton.setText("Submit");
+        StsubmitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StsubmitButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(175, 175, 175)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(127, 127, 127)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                        .addComponent(Backbtn3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(151, 151, 151)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(tssubmitbutton)
-                                    .addComponent(team, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(143, 143, 143)
-                                .addComponent(jLabel2)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(jLabel2)
+                        .addGap(14, 14, 14)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                .addComponent(BackButton2)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(213, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(StsubmitButton)
+                    .addComponent(Player, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(190, 190, 190))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Backbtn3)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(BackButton2)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(team, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tssubmitbutton)
-                .addContainerGap(240, Short.MAX_VALUE))
+                .addComponent(Player, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(StsubmitButton)
+                .addContainerGap(289, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Backbtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Backbtn3ActionPerformed
+    private void BackButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButton2ActionPerformed
         homescreen hs = new homescreen();
         hs.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_Backbtn3ActionPerformed
+    }//GEN-LAST:event_BackButton2ActionPerformed
 
-    private void tssubmitbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tssubmitbuttonActionPerformed
+    private void StsubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StsubmitButtonActionPerformed
         // TODO add your handling code here:
-        String sTeam = String.valueOf(team.getSelectedItem());
-        java.sql.ResultSet vTeamstats = null;
+        String sPlayer = String.valueOf(Player.getSelectedItem());
+        java.sql.ResultSet vStats = null;
         Statement sta = null;
         String url2 = "jdbc:mysql://185.156.138.148/4-klambert";
         String user2 = "4-klambert";
         String password2 = "Duty3-Palace-Area";
-        String vQueryteamstats = null;
+        String vQuerystats = null;
         DefaultTableModel model = new DefaultTableModel();
         Vector columnNames = new Vector();
         Vector data = new Vector();  
@@ -145,42 +165,27 @@ public class teamstatistics extends javax.swing.JFrame {
             Connection connection2 = DriverManager.getConnection(url2, user2, password2);
             // build our sql statement to add a team from the team name box
             // String query = "INSERT INTO Teams (team_name) values('" + Teamname + "')";
-            vQueryteamstats = "select m.match_id,m.dateplayed \"Match Date\",t.team_name \"Home Team\",a.team_name \"Away Team\",m.home_score,m.away_score,w.team_name \"Winner\", " +
-                "case " +
-                "when m.match_abandoned = 0 then 'No' " +
-                "else 'Yes' " +
-                "end as \"Match Abandoned\" " +
-                "from Matches m, Teams t, Teams a, Teams w " +
-                "where m.home_team = t.team_id " +
-                "and m.away_team = a.team_id " +
-                "and m.team_won = w.team_id " +
-                "and t.team_name = \""+ sTeam +"\" " +
-                "union " +
-                "select m.match_id,m.dateplayed \"Match Date\",t.team_name \"Home Team\",a.team_name \"Away Team\",m.home_score,m.away_score,w.team_name \"Winner\", " +
-                "case " +
-                "when m.match_abandoned = 0 then 'No' " +
-                "else 'Yes' " +
-                "end as \"Match Abandoned\" " +
-                "from Matches m, Teams t, Teams a, Teams w " +
-                "where m.home_team = t.team_id " +
-                "and m.away_team = a.team_id " +
-                "and m.team_won = w.team_id " +
-                "and a.team_name = \""+ sTeam +"\";";
+            vQuerystats = "select s.match_id,m.dateplayed,p.players_name,s.runrate,s.catches,s.times_out,s.wickets_taken,t.team_name " +
+                "from Stats s, Teams t, Players p, Matches m " +
+                "where s.player_id = p.player_id " +
+                "and s.team_id = t.team_id " +
+                "and s.match_id = m.match_id " +
+                "and p.players_name = \""+ sPlayer +"\";";
             sta = connection2.createStatement();
             // execute the query
-            vTeamstats = sta.executeQuery(vQueryteamstats);
+            vStats = sta.executeQuery(vQuerystats);
             
-            java.sql.ResultSetMetaData metaData = vTeamstats.getMetaData();
+            java.sql.ResultSetMetaData metaData = vStats.getMetaData();
             int columnCount = metaData.getColumnCount();
             String[] scratchNames = new String[columnCount];
             scratchNames[0] = "Match ID";
             scratchNames[1] = "Date Played";
-            scratchNames[2] = "Home Team";
-            scratchNames[3] = "Away Team";
-            scratchNames[4] = "Home Score";
-            scratchNames[5] = "Away Score";
-            scratchNames[6] = "Winner";
-            scratchNames[7] = "Match Abandoned";
+            scratchNames[2] = "Player Name";
+            scratchNames[3] = "Run Rate";
+            scratchNames[4] = "Catches";
+            scratchNames[5] = "Outs";
+            scratchNames[6] = "Wickets taken";
+            scratchNames[7] = "Team Name";
             for (int i = 0; i < columnCount; i++) 
                 columnNames.addElement( scratchNames[i] );
             
@@ -188,12 +193,12 @@ public class teamstatistics extends javax.swing.JFrame {
             //model.setColumnIdentifiers(columnNames);
             
             //Object[] row = new Object[columnCount];
-            while (vTeamstats.next())
+            while (vStats.next())
             {
                 Vector row = new Vector(columnCount);
                 for (int i = 1; i <= columnCount; i++)
                 {
-                    row.addElement(vTeamstats.getObject(i));
+                    row.addElement(vStats.getObject(i));
                 }
                 data.addElement(row);
             }
@@ -231,7 +236,8 @@ public class teamstatistics extends javax.swing.JFrame {
                     exception.printStackTrace();
                 }
         
-    }//GEN-LAST:event_tssubmitbuttonActionPerformed
+        
+    }//GEN-LAST:event_StsubmitButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -249,20 +255,25 @@ public class teamstatistics extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) 
+        {
+
         }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new teamstatistics().setVisible(true));
-    }
+  
+            
+        }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Backbtn3;
+    private javax.swing.JButton BackButton2;
+    private javax.swing.JComboBox<String> Player;
+    private javax.swing.JButton StsubmitButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JComboBox<String> team;
-    private javax.swing.JButton tssubmitbutton;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
-}
+        }
+

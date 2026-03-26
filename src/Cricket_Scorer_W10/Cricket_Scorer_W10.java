@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package javaapplication2;
+package Cricket_Scorer_W10;
 
 /**
  *
  * @author 4-klambert
  */
-public class JavaApplication2 {
+public class Cricket_Scorer_W10 {
 
     /**
      * @param args the command line arguments

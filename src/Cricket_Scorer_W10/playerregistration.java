@@ -2,10 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package javaapplication2;
-// add sql class imports
+package Cricket_Scorer_W10;
+// import sql classes needed
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 
@@ -13,13 +15,29 @@ import javax.swing.JOptionPane;
  *
  * @author 4-klambert
  */
-public class teamregistration extends javax.swing.JFrame {
+public class playerregistration extends javax.swing.JFrame {
 
     /**
      * Creates new form player registration
      */
-    public teamregistration() {
+    public playerregistration() {
         initComponents();
+        ResultSet vTeam;
+        String url = "jdbc:mysql://185.156.138.148/4-klambert";
+        String user = "4-klambert";
+        String password = "Duty3-Palace-Area";
+        String vQueryTeam = "SELECT team_name FROM Teams";
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
+            Connection connect = DriverManager.getConnection(url, user, password);
+            PreparedStatement ps2 = connect.prepareStatement(vQueryTeam);
+            vTeam = ps2.executeQuery();
+            while(vTeam.next()) {
+                teamselect.addItem(vTeam.getString("team_name"));
+            }
+            } catch (Exception e) {
+        }
     }
 
     /**
@@ -31,24 +49,28 @@ public class teamregistration extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Teamlabel1 = new javax.swing.JLabel();
-        Teamlabel2 = new javax.swing.JLabel();
-        TeamNameBox = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        FullNameBox = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         BackButton1 = new javax.swing.JButton();
-        NTSubmitDB = new javax.swing.JButton();
+        NPSubmitDB = new javax.swing.JButton();
+        teamselect = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Teamlabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        Teamlabel1.setText("Add a New Team ");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setText("Add a New Player ");
 
-        Teamlabel2.setText("Team Name:");
+        jLabel2.setText("Full Name:");
 
-        TeamNameBox.addActionListener(new java.awt.event.ActionListener() {
+        FullNameBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TeamNameBoxActionPerformed(evt);
+                FullNameBoxActionPerformed(evt);
             }
         });
+
+        jLabel3.setText("Team:");
 
         BackButton1.setText("Back");
         BackButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -57,36 +79,44 @@ public class teamregistration extends javax.swing.JFrame {
             }
         });
 
-        NTSubmitDB.setText("Submit");
-        NTSubmitDB.addActionListener(new java.awt.event.ActionListener() {
+        NPSubmitDB.setText("Submit");
+        NPSubmitDB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NTSubmitDBActionPerformed(evt);
+                NPSubmitDBActionPerformed(evt);
             }
         });
+
+        teamselect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Team name" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(91, 91, 91)
-                        .addComponent(Teamlabel2))
+                        .addContainerGap(91, Short.MAX_VALUE)
+                        .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(BackButton1)))
+                        .addContainerGap(70, Short.MAX_VALUE)
+                        .addComponent(BackButton1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(98, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
+                        .addGap(17, 17, 17)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(Teamlabel1))
+                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(45, 45, 45)
-                        .addComponent(TeamNameBox, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(129, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(NTSubmitDB)
+                        .addComponent(FullNameBox, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addComponent(NPSubmitDB))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(teamselect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(185, 185, 185))
         );
         layout.setVerticalGroup(
@@ -95,40 +125,46 @@ public class teamregistration extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
-                        .addComponent(Teamlabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addComponent(BackButton1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TeamNameBox, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Teamlabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(161, 161, 161)
-                .addComponent(NTSubmitDB)
-                .addContainerGap(35, Short.MAX_VALUE))
+                    .addComponent(FullNameBox, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(teamselect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
+                .addComponent(NPSubmitDB)
+                .addContainerGap(95, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TeamNameBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TeamNameBoxActionPerformed
+    private void FullNameBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FullNameBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TeamNameBoxActionPerformed
+    }//GEN-LAST:event_FullNameBoxActionPerformed
 
     private void BackButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButton1ActionPerformed
         // TODO add your handling code here:
-        // back button will take us to the homescreen
+        // back button will open new homescreen
         homescreen hs = new homescreen();
         hs.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BackButton1ActionPerformed
 
-    private void NTSubmitDBActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void NPSubmitDBActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
-        // get the value entered into the team box
-        String Teamname = TeamNameBox.getText();
+        // get the values from the name and team boxes
+        String Fullname = FullNameBox.getText();
+        //String Teamname = teamselect.getText();
+        String Teamname = String.valueOf(teamselect.getSelectedItem());
         // add a \n to the end of the string for the joption window
-        String msg = "" + Teamname;
+        String msg = "" + Fullname;
         msg += " \n";
         // mysql db connection variables
         String url = "jdbc:mysql://185.156.138.148/4-klambert";
@@ -139,19 +175,20 @@ public class teamregistration extends javax.swing.JFrame {
             // create a connection to mysql db
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
             Connection connection = DriverManager.getConnection(url, user, password);
-            // build our sql statement to add a team from the team name box
-            String query = "INSERT INTO Teams (team_name) values('" + Teamname + "')";
+            // build our sql statement to add a player from the player name box
+            //String query = "INSERT INTO Players (players_name, Team_name) values('" + Fullname + "', select team_id from Teams where team_name ='" + Teamname + "')";
+            String query = "INSERT INTO Players (players_name, team_id) values ('" + Fullname + "',(select team_id from Teams where team_name =\"" + Teamname + "\"))";
             Statement sta = connection.createStatement();
             // execute the query
             int x = sta.executeUpdate(query);
             if (x == 0) {
                 // if we get here it broke
-                JOptionPane.showMessageDialog(NTSubmitDB, "This team already exists");
+                JOptionPane.showMessageDialog(NPSubmitDB, "This player already exists");
             } else {
-                // it was successfully added to the teams table in the mysql db
+                // it was successfully added to the players table in the mysql db
                 // let the user know
-                JOptionPane.showMessageDialog(NTSubmitDB,
-                            "Welcome, " + msg + "Team has been sucessfully created");
+                JOptionPane.showMessageDialog(NPSubmitDB,
+                            "Welcome, " + msg + "Player is sucessfully created");
                     }
                     // close the connection to the db and commit
                     connection.close();
@@ -198,9 +235,11 @@ public class teamregistration extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackButton1;
-    private javax.swing.JButton NTSubmitDB;
-    private javax.swing.JTextField TeamNameBox;
-    private javax.swing.JLabel Teamlabel1;
-    private javax.swing.JLabel Teamlabel2;
+    private javax.swing.JTextField FullNameBox;
+    private javax.swing.JButton NPSubmitDB;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JComboBox<String> teamselect;
     // End of variables declaration//GEN-END:variables
 }

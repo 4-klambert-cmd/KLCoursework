@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package javaapplication2;
+package Cricket_Scorer_W10;
 // import the sql classes here that we use
 import java.awt.event.ActionEvent;
 import java.sql.Connection;
@@ -85,8 +85,6 @@ public class newmatch3 extends javax.swing.JFrame {
         }
         } catch (Exception e) {
         }
-       //B11 + B12 + B13 + B14 + B15 + B16 = batter1total;
-       //brrr
        //private void Updatetotal(){
            String total = 
                    B11.getText()+
