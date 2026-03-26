@@ -175,27 +175,38 @@ public class playerregistration extends javax.swing.JFrame {
             // create a connection to mysql db
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
             Connection connection = DriverManager.getConnection(url, user, password);
+            // Check for player name already registered or not
+            String chkquery = "select players_name from Players where players_name ='" + Fullname + "';";
             // build our sql statement to add a player from the player name box
             //String query = "INSERT INTO Players (players_name, Team_name) values('" + Fullname + "', select team_id from Teams where team_name ='" + Teamname + "')";
             String query = "INSERT INTO Players (players_name, team_id) values ('" + Fullname + "',(select team_id from Teams where team_name =\"" + Teamname + "\"))";
             Statement sta = connection.createStatement();
+            int q = 0;
             // execute the query
-            int x = sta.executeUpdate(query);
-            if (x == 0) {
+            ResultSet y = sta.executeQuery(chkquery);
+            if (y.isBeforeFirst() ) {
+                JOptionPane.showMessageDialog(NPSubmitDB, "This player already exists in the table");
+                q = 1;
+                FullNameBox.setText("");
+            } 
+            if (q != 1) {
+                int x = sta.executeUpdate(query);
+                if (x == 0) {
                 // if we get here it broke
-                JOptionPane.showMessageDialog(NPSubmitDB, "This player already exists");
-            } else {
+                    JOptionPane.showMessageDialog(NPSubmitDB, "This player already exists");
+                } else {
                 // it was successfully added to the players table in the mysql db
                 // let the user know
-                JOptionPane.showMessageDialog(NPSubmitDB,
+                    JOptionPane.showMessageDialog(NPSubmitDB,
                             "Welcome, " + msg + "Player is sucessfully created");
-                    }
-                    // close the connection to the db and commit
-                    connection.close();
-                } catch (Exception exception) {
-                    exception.printStackTrace();
                 }
-        }
+                    // close the connection to the db and commit
+                connection.close();
+            }
+        } catch (Exception exception) {
+                    exception.printStackTrace();
+                    }
+    }
     
      /**
      * @param args the command line arguments

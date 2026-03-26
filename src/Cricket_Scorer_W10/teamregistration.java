@@ -6,6 +6,7 @@ package Cricket_Scorer_W10;
 // add sql class imports
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 
@@ -141,24 +142,36 @@ public class teamregistration extends javax.swing.JFrame {
             Connection connection = DriverManager.getConnection(url, user, password);
             // build our sql statement to add a team from the team name box
             String query = "INSERT INTO Teams (team_name) values('" + Teamname + "')";
+            String chkquery = "select team_name from Teams where team_name ='" + Teamname + "';";
+            int q = 0;
             Statement sta = connection.createStatement();
-            // execute the query
-            int x = sta.executeUpdate(query);
-            if (x == 0) {
-                // if we get here it broke
-                JOptionPane.showMessageDialog(NTSubmitDB, "This team already exists");
-            } else {
-                // it was successfully added to the teams table in the mysql db
-                // let the user know
-                JOptionPane.showMessageDialog(NTSubmitDB,
+            // Check for existing team name
+            ResultSet y = sta.executeQuery(chkquery);
+            if (y.isBeforeFirst() ) {
+                JOptionPane.showMessageDialog(NTSubmitDB, "This team already exists in the table");
+                q = 1;
+                TeamNameBox.setText("");
+            } 
+            if (q != 1) {
+                // execute the query
+                int x = sta.executeUpdate(query);
+                if (x == 0) {
+                    // if we get here it broke
+                    JOptionPane.showMessageDialog(NTSubmitDB, "This team already exists");
+                } else {
+                    // it was successfully added to the teams table in the mysql db
+                    // let the user know
+                    JOptionPane.showMessageDialog(NTSubmitDB,
                             "Welcome, " + msg + "Team has been sucessfully created");
                     }
                     // close the connection to the db and commit
                     connection.close();
-                } catch (Exception exception) {
-                    exception.printStackTrace();
                 }
+            } 
+        catch (Exception exception) {
+                    exception.printStackTrace();
         }
+    }
     
      /**
      * @param args the command line arguments
