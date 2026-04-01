@@ -156,8 +156,8 @@ public class teamregistration extends javax.swing.JFrame {
                 // execute the query
                 int x = sta.executeUpdate(query);
                 if (x == 0) {
-                    // if we get here it broke
-                    JOptionPane.showMessageDialog(NTSubmitDB, "This team already exists");
+                    // if we get here the insert into the table failed
+                    JOptionPane.showMessageDialog(NTSubmitDB, "the insert failed");
                 } else {
                     // it was successfully added to the teams table in the mysql db
                     // let the user know
